@@ -1,6 +1,6 @@
 'use strict';
 
-class DataCollection {
+class Collection {
 
   constructor(model) {
     this.model = model;
@@ -26,4 +26,4 @@ class DataCollection {
   }
 }
 
-module.exports = DataCollection;
+module.exports = Collection;
