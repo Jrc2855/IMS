@@ -21,34 +21,64 @@ router.post('/:model', handleCreate);
 router.put('/:model/:id', handleUpdate);
 router.delete('/:model/:id', handleDelete);
 
-const handleGetAll = async (req, res) => {
+async function handleGetAll(req, res) {
   let allRecords = await req.model.get();
   res.status(200).json(allRecords);
-};
+}
 
-const handleGetOne = async (req, res) => {
+async function handleGetOne(req, res) {
   const id = req.params.id;
-  let theRecord  = await req.model.get(id);
+  let theRecord = await req.model.get(id);
   res.status(200).json(theRecord);
-};
+}
 
-const handleCreate = async (req, res) => {
+async function handleCreate(req, res) {
   let obj = req.body;
   let newRecord = await req.model.create(obj);
   res.status(201).json(newRecord);
-};
+}
 
-const handleUpdate = async (req, res) => {
+async function handleUpdate(req, res) {
   const id = req.params.id;
   const obj = req.body;
   let updatedRecord = await req.model.update(id, obj);
   res.status(200).json(updatedRecord);
-};
+}
 
-const handleDelete = async (req, res) => {
+async function handleDelete(req, res) {
   let id = req.params.id;
   let deletedRecord = await req.model.delete(id);
   res.status(200).json(deletedRecord);
-};
+}
+
+// const handleGetAll = async (req, res) => {
+//   let allRecords = await req.model.get();
+//   res.status(200).json(allRecords);
+// };
+
+// const handleGetOne = async (req, res) => {
+//   const id = req.params.id;
+//   let theRecord  = await req.model.get(id);
+//   res.status(200).json(theRecord);
+// };
+
+// const handleCreate = async (req, res) => {
+//   let obj = req.body;
+//   let newRecord = await req.model.create(obj);
+//   res.status(201).json(newRecord);
+// };
+
+// const handleUpdate = async (req, res) => {
+//   const id = req.params.id;
+//   const obj = req.body;
+//   let updatedRecord = await req.model.update(id, obj);
+//   res.status(200).json(updatedRecord);
+// };
+
+// const handleDelete = async (req, res) => {
+//   let id = req.params.id;
+//   let deletedRecord = await req.model.delete(id);
+//   res.status(200).json(deletedRecord);
+// };
 
 module.exports = router;
